@@ -1,0 +1,47 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+[compileJava, compileTestJava].each {
+    it.options.encoding = 'UTF-8'
+}
+
+configurations { providedCompile }
+
+sourceSets.main.compileClasspath += configurations.providedCompile
+sourceSets.test.compileClasspath += configurations.providedCompile
+sourceSets.test.runtimeClasspath += configurations.providedCompile
+
+jar {
+    baseName = '${PluginName}'
+    version = '${PluginVersion}'
+
+    manifest {
+        attributes 'Plugin-ID': '${PluginID}'
+        attributes 'Plugin-Name': '${PluginName}'
+        attributes 'Author': '${Author}'
+        attributes 'Author-Web': '${AuthorWeb}'
+        attributes 'Plugin-Version': '${PluginVersion}'
+        attributes 'Min-API-Version': '${MinApiVersion}'
+        attributes 'Plugin-Class': '${PluginPackage}.${MainClass}'
+    }
+    from {
+        configurations.compile.collect {
+             it.isDirectory() ? it : zipTree(it)
+         }
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url = 'http://repos.orekyuu.net/'
+    }
+}
+
+dependencies {
+    providedCompile 'net.orekyuu:JavaBeamStudioAPI:${MinApiVersion}'
+    ${Dependencies}
+}

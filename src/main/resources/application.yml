@@ -1,0 +1,6 @@
+logging.level.org.springframework.security: INFO
+server:
+  port: 8081
+spring:
+  thymeleaf:
+    cache: false

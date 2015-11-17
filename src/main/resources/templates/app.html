@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>JavaBeamStudio Plugin Starter</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"
+          th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap-theme.min.css}"/>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#" th:href="@{/}">JavaBeamStudio Plugin Starter</a>
+        </div>
+    </div>
+</nav>
+<div style="padding-top: 40px; margin-top: 0">
+    <form action="." th:action="@{/}" th:object="${starterForm}" method="post">
+        <div class="col-sm-12">
+            <div class="form-horizontal col-sm-6">
+                <h2>Development Settings</h2>
+
+                <div class="form-group">
+                    <label for="projectPackage" class="col-sm-3 control-label">Package</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{projectPackage}" class="form-control" id="projectPackage" placeholder="org.sample"/>
+                    </div>
+                    <label class="col-sm-offset-3 col-sm-9" th:if="${#fields.hasErrors('projectPackage')}" th:errors="*{projectPackage}">
+                        error
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="mainClass" class="col-sm-3 control-label">MainClass</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{mainClass}" class="form-control" id="mainClass" placeholder="SamplePlugin"/>
+                    </div>
+                    <label class="col-sm-offset-3 col-sm-9" th:if="${#fields.hasErrors('mainClass')}" th:errors="*{mainClass}">
+                        error
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="pluginID" class="col-sm-3 control-label">PluginID</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{pluginId}" class="form-control" id="pluginID" placeholder="org.sample.SamplePlugin"/>
+                    </div>
+                    <label class="col-sm-offset-3 col-sm-9" th:if="${#fields.hasErrors('pluginId')}" th:errors="*{pluginId}">
+                        error
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="pluginName" class="col-sm-3 control-label">PluginName</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{pluginName}" class="form-control" id="pluginName" placeholder="SamplePlugin"/>
+                    </div>
+                    <label class="col-sm-offset-3 col-sm-9" th:if="${#fields.hasErrors('pluginName')}" th:errors="*{pluginName}">
+                        error
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="author" class="col-sm-3 control-label">Author</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{author}" class="form-control" id="author" placeholder="dev"/>
+                    </div>
+                    <label class="col-sm-offset-3 col-sm-9" th:if="${#fields.hasErrors('author')}" th:errors="*{author}">
+                        error
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="authorWeb" class="col-sm-3 control-label">AuthorWeb</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{authorWeb}" class="form-control" id="authorWeb" placeholder="http://javatter.orekyuu.net/"/>
+                    </div>
+                    <label class="col-sm-offset-3 col-sm-9" th:if="${#fields.hasErrors('authorWeb')}" th:errors="*{authorWeb}">
+                        error
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="pluginVersion" class="col-sm-3 control-label">PluginVersion</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{pluginVersion}" class="form-control" id="pluginVersion" placeholder="1.0.0"/>
+                    </div>
+                    <label class="col-sm-offset-3 col-sm-9" th:if="${#fields.hasErrors('pluginVersion')}" th:errors="*{pluginVersion}">
+                        error
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="pluginVersion" class="col-sm-3 control-label">MinApiVersion</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{minApiVersion}" class="form-control" id="pluginVersion" placeholder="1.0.0"/>
+                    </div>
+                    <label class="col-sm-offset-3 col-sm-9" th:if="${#fields.hasErrors('minApiVersion')}" th:errors="*{minApiVersion}">
+                        error
+                    </label>
+                </div>
+            </div>
+            <div class="form-horizontal col-sm-5 col-sm-offset-1">
+                <h2>Options</h2>
+
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" th:field="*{guava}"/> Guava
+                    </label>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary col-sm-2 col-sm-offset-5">Generate</button>
+    </form>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+        th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"
+        th:src="@{/webjars/bootstrap/3.2.0/js/bootstrap.min.js}"></script>
+</body>
+</html>

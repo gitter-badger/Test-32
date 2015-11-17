@@ -1,0 +1,45 @@
+package ${PluginPackage};
+
+import net.orekyuu.javatter.api.command.Command;
+import net.orekyuu.javatter.api.command.CommandManager;
+import net.orekyuu.javatter.api.plugin.OnPostInit;
+import net.orekyuu.javatter.api.service.TwitterUserService;
+import net.orekyuu.javatter.api.twitter.TweetBuilder;
+import net.orekyuu.javatter.api.twitter.TwitterUser;
+
+import javax.inject.Inject;
+import java.util.List;
+import java.util.Optional;
+
+public class ${MainClass} {
+
+    @Inject
+    private CommandManager commandManager;
+    @Inject
+    private TwitterUserService twitterUserService;
+
+    @OnPostInit
+    public void initialize() {
+        commandManager.registerCommand(new Command() {
+            @Override
+            public String command() {
+                return "hello";
+            }
+
+            @Override
+            public String help() {
+                return "Tweet hello";
+            }
+
+            @Override
+            public void exec(List<String> args) {
+                Optional<TwitterUser> selectedUser = twitterUserService.selectedAccount();
+                selectedUser.ifPresent(user -> {
+                    TweetBuilder tweetBuilder = user.createTweet();
+                    tweetBuilder.setAsync().setText("Hello JavaBeamStudioPlugin!");
+                    tweetBuilder.tweet();
+                });
+            }
+        });
+    }
+}
