@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DevStarterApplication {
 
     public static void main(String[] args) {
-	//test
+	//hoge
         SpringApplication.run(DevStarterApplication.class, args);
     }
 }
