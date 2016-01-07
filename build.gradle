@@ -22,7 +22,7 @@ springBoot {
 }
 
 jar {
-    baseName = 'javatterstarter'
+    baseName = 'Test'
     version = '1.0.2'
 }
 sourceCompatibility = 1.8
