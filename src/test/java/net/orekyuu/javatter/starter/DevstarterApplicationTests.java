@@ -13,6 +13,8 @@ public class DevstarterApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		String a = null;
+		a.toString();
 	}
 
 }
